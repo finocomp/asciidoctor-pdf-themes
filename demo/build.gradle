@@ -1,0 +1,20 @@
+plugins {
+    id 'org.asciidoctor.jvm.pdf' version '3.1.0'
+}
+
+pdfThemes {
+    local 'finocomp', {
+        themeDir = rootProject.file('themes/finocomp')
+    }
+}
+
+asciidoctorPdf {
+    sourceDir = file('docs/asciidoc')
+    theme = 'finocomp'
+
+    attributes = [
+            'source-highlighter': 'coderay'
+    ]
+}
+
+assemble.dependsOn(asciidoctorPdf)

@@ -1,0 +1,35 @@
+plugins {
+    id 'base'
+    id 'net.researchgate.release' version '2.8.1'
+}
+
+ext {
+    gradleWrapperVersion = '6.5.1'
+}
+
+allprojects {
+    buildscript {
+        repositories {
+            jcenter()
+            mavenCentral()
+        }
+    }
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    group 'com.finocomp'
+    version '1.0.0-SNAPSHOT'
+}
+
+release {
+    tagTemplate = 'REL-$version'
+    git {
+        requireBranch = "" // we want to be able to release on any branch
+    }
+}
+
+wrapper {
+    gradleVersion = gradleWrapperVersion
+    distributionType = Wrapper.DistributionType.ALL
+}
